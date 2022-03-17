@@ -4,7 +4,6 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_web_view.dart';
 import '../news/news_widget.dart';
 import '../widget/widget_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -33,8 +32,8 @@ class _WalletWidgetState extends State<WalletWidget> {
           borderWidth: 1,
           buttonSize: 60,
           icon: FaIcon(
-            FontAwesomeIcons.chartLine,
-            color: Colors.white,
+            FontAwesomeIcons.chartArea,
+            color: FlutterFlowTheme.of(context).secondaryBackground,
             size: 30,
           ),
           onPressed: () async {
@@ -46,20 +45,23 @@ class _WalletWidgetState extends State<WalletWidget> {
             );
           },
         ),
-        title: InkWell(
-          onTap: () async {
-            await Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => WalletWidget(),
-              ),
-            );
-          },
-          child: CachedNetworkImage(
-            imageUrl: 'https://coinfundit.com/file/2022/02/logo-cfi-w.png',
-            width: 100,
-            height: 70,
-            fit: BoxFit.fitWidth,
+        title: Align(
+          alignment: AlignmentDirectional(0, 0),
+          child: InkWell(
+            onTap: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WalletWidget(),
+                ),
+              );
+            },
+            child: Image.asset(
+              'assets/images/logo-cfi-w.png',
+              width: 100,
+              height: 70,
+              fit: BoxFit.fitWidth,
+            ),
           ),
         ),
         actions: [
@@ -68,10 +70,9 @@ class _WalletWidgetState extends State<WalletWidget> {
             borderRadius: 30,
             borderWidth: 1,
             buttonSize: 60,
-            fillColor: Color(0x00FFFFFF),
             icon: FaIcon(
               FontAwesomeIcons.newspaper,
-              color: Colors.white,
+              color: FlutterFlowTheme.of(context).secondaryBackground,
               size: 30,
             ),
             onPressed: () async {
@@ -84,24 +85,19 @@ class _WalletWidgetState extends State<WalletWidget> {
             },
           ),
         ],
-        centerTitle: true,
-        elevation: 4,
+        centerTitle: false,
+        elevation: 2,
       ),
-      backgroundColor: Color(0xFF111111),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child: Stack(
-          children: [
-            Align(
-              alignment: AlignmentDirectional(0, 0),
-              child: FlutterFlowWebView(
-                url: 'https://local.coinfundit.com/app/#/',
-                bypass: true,
-                verticalScroll: false,
-                horizontalScroll: false,
-              ),
-            ),
-          ],
+        child: FlutterFlowWebView(
+          url: 'https://local.coinfundit.com/app/#/',
+          bypass: true,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 1,
+          verticalScroll: false,
+          horizontalScroll: false,
         ),
       ),
     );
