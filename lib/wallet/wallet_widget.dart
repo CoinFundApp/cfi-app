@@ -98,7 +98,7 @@ class _WalletWidgetState extends State<WalletWidget> {
           url: 'https://coinfundit.com/mobile/#/',
           bypass: true,
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 1,
+          height: MediaQuery.of(context).size.height * 0.9,
           verticalScroll: false,
           horizontalScroll: false,
         ),
