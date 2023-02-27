@@ -54,6 +54,7 @@ class _NewsWidgetState extends State<NewsWidget> {
             color: Colors.white,
             size: 30,
           ),
+          showLoadingIndicator: true,
           onPressed: () async {
             context.pop();
           },

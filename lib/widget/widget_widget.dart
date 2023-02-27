@@ -54,6 +54,7 @@ class _WidgetWidgetState extends State<WidgetWidget> {
             color: Colors.white,
             size: 30,
           ),
+          showLoadingIndicator: true,
           onPressed: () async {
             context.pop();
           },

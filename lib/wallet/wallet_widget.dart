@@ -55,6 +55,7 @@ class _WalletWidgetState extends State<WalletWidget> {
             color: Colors.white,
             size: 30,
           ),
+          showLoadingIndicator: true,
           onPressed: () async {
             context.pushNamed('Widget');
           },
@@ -84,6 +85,7 @@ class _WalletWidgetState extends State<WalletWidget> {
               color: Colors.white,
               size: 30,
             ),
+            showLoadingIndicator: true,
             onPressed: () async {
               context.pushNamed('News');
             },
