@@ -92,17 +92,22 @@ class _NewsWidgetState extends State<NewsWidget> {
         centerTitle: false,
         elevation: 2,
       ),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-        child: Align(
-          alignment: AlignmentDirectional(0, 0),
-          child: FlutterFlowWebView(
-            url: 'https://coinfundit.com/mobile/news/',
-            bypass: true,
-            width: MediaQuery.of(context).size.width * 0.95,
-            height: MediaQuery.of(context).size.height * 1,
-            verticalScroll: false,
-            horizontalScroll: false,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Align(
+            alignment: AlignmentDirectional(0, 0),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+              child: FlutterFlowWebView(
+                url: 'https://coinfundit.com/mobile/news/',
+                bypass: true,
+                width: MediaQuery.of(context).size.width * 0.95,
+                height: MediaQuery.of(context).size.height * 1,
+                verticalScroll: false,
+                horizontalScroll: false,
+              ),
+            ),
           ),
         ),
       ),

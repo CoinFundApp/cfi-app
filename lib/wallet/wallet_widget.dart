@@ -94,15 +94,20 @@ class _WalletWidgetState extends State<WalletWidget> {
         centerTitle: false,
         elevation: 2,
       ),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-        child: FlutterFlowWebView(
-          url: 'https://coinfundit.com/mobile/#/',
-          bypass: true,
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.9,
-          verticalScroll: false,
-          horizontalScroll: false,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+            child: FlutterFlowWebView(
+              url: 'https://coinfundit.com/mobile/#/',
+              bypass: true,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 1,
+              verticalScroll: false,
+              horizontalScroll: false,
+            ),
+          ),
         ),
       ),
     );
