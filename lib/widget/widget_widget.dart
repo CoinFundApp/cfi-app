@@ -2,25 +2,45 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_web_view.dart';
-import '../wallet/wallet_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'widget_model.dart';
+export 'widget_model.dart';
 
 class WidgetWidget extends StatefulWidget {
-  const WidgetWidget({Key key}) : super(key: key);
+  const WidgetWidget({Key? key}) : super(key: key);
 
   @override
   _WidgetWidgetState createState() => _WidgetWidgetState();
 }
 
 class _WidgetWidgetState extends State<WidgetWidget> {
+  late WidgetModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => WidgetModel());
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    _unfocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: Color(0xFF111111),
         automaticallyImplyLeading: false,
@@ -31,23 +51,18 @@ class _WidgetWidgetState extends State<WidgetWidget> {
           buttonSize: 60,
           icon: Icon(
             Icons.arrow_back_ios,
-            color: FlutterFlowTheme.of(context).secondaryBackground,
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () async {
-            Navigator.pop(context);
+            context.pop();
           },
         ),
         title: Align(
           alignment: AlignmentDirectional(0, 0),
           child: InkWell(
             onTap: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => WalletWidget(),
-                ),
-              );
+              context.pushNamed('Wallet');
             },
             child: Image.asset(
               'assets/images/logo-cfi-w.png',
@@ -76,13 +91,12 @@ class _WidgetWidgetState extends State<WidgetWidget> {
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
         child: Align(
           alignment: AlignmentDirectional(0, 0),
           child: FlutterFlowWebView(
-            url: 'https://local.coinfundit.com/widget/',
+            url: 'https://coinfundit.com/mobile/market/',
             bypass: true,
             width: MediaQuery.of(context).size.width * 0.95,
             height: MediaQuery.of(context).size.height * 1,
